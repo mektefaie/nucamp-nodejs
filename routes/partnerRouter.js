@@ -21,26 +21,26 @@ partnerRouter.route('/')
     res.end('Deleting all partners');
   });
 
-partnerRouter.route('/:campsiteId')
+partnerRouter.route('/:partnerId')
   .all((req, res, next) => {
     res.statusCode = 200;
     res.setHeader('Content-Type', 'text/plain');
     next();
   })
   .get((req, res) => {
-    res.end(`Will send details of the partner: ${req.params.campsiteId} to you`);
+    res.end(`Will send details of the partner: ${req.params.partnerId} to you`);
   })
   .post((req, res) => {
     res.statusCode = 403;
-    res.end(`POST operation not supported on /partners/${req.params.campsiteId}`);
+    res.end(`POST operation not supported on /partners/${req.params.partnerId}`);
   })
   .put((req, res) => {
-    res.write(`Updating the partner: ${req.params.campsiteId}\n`);
+    res.write(`Updating the partner: ${req.params.partnerId}\n`);
     res.end(`Will update the partner: ${req.body.name}
           with description: ${req.body.description}`);
   })
   .delete((req, res) => {
-    res.end(`Deleting partner: ${req.params.campsiteId}`);
+    res.end(`Deleting partner: ${req.params.partnerId}`);
   });
 
 module.exports = partnerRouter;
